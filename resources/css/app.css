@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Outfit:wght@100..900&display=swap');
+@import './admin.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-luxury-black text-gray-200 font-sans antialiased selection:bg-gold/30 selection:text-white;
+    }
+    
+    h1, h2, h3, h4 {
+        @apply font-sans font-bold tracking-tight;
+    }
+}
+
+@layer components {
+    .btn-gold {
+        @apply bg-gradient-to-r from-gold-dark via-gold to-gold-dark text-black font-bold py-3 px-8 rounded-md transition-all duration-500 shadow-xl hover:shadow-gold/20 hover:scale-[1.02] active:scale-[0.98] uppercase tracking-[0.2em] text-[10px];
+    }
+
+    .luxury-card {
+        @apply bg-[#111111] border border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl;
+    }
+
+    .holding-card {
+        @apply relative overflow-hidden rounded-[2.5rem] bg-[#0A0A0A] border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)];
+    }
+
+    .holding-card-header {
+        @apply p-8 bg-[#161616] border-b border-white/5;
+    }
+
+    .holding-card-body {
+        @apply p-8;
+    }
+
+    .aperture-ring {
+        @apply relative w-32 h-32 rounded-full border-[10px] border-white/5 flex items-center justify-center;
+    }
+
+    .aperture-progress {
+        @apply absolute inset-[-10px] rounded-full border-[10px] border-gold;
+        clip-path: polygon(50% 50%, 50% 0%, 100% 0%, 100% 100%, 0% 100%, 0% 0%, 50% 0%);
+    }
+
+    .bottom-dock {
+        @apply fixed bottom-8 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 flex items-center space-x-12 z-[100] shadow-2xl;
+    }
+
+    .dock-fab {
+        @apply w-14 h-14 rounded-full bg-gold text-black flex items-center justify-center shadow-lg shadow-gold/20 hover:scale-110 active:scale-95 transition-all duration-300 -mt-10 border-4 border-[#0A0A0A];
+    }
+
+    .glass {
+        @apply bg-black/60 backdrop-blur-3xl border-white/10;
+    }
+
+    .gold-gradient-text {
+        @apply bg-gradient-to-br from-gold-light via-gold to-gold-dark bg-clip-text text-transparent italic;
+    }
+}
+
+.glow-gold {
+    box-shadow: 0 0 15px -2px rgba(212, 175, 55, 0.3);
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+    animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+    animation-play-state: paused;
+}
