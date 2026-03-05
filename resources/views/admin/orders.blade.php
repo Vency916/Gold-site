@@ -55,12 +55,19 @@
                             </td>
                             <td class="orbit-table-td">
                                 @if($order->receipt_path)
-                                <a href="{{ Storage::url($order->receipt_path) }}" target="_blank" class="flex items-center space-x-2 text-[9px] font-black text-gold uppercase tracking-[0.15em] hover:text-black transition-colors group/link">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
-                                    <span class="group-hover/link:underline underline-offset-4">Decrypt Receipt</span>
-                                </a>
+                                    @if(str_starts_with($order->receipt_path, 'tracking: '))
+                                        <div class="flex flex-col">
+                                            <span class="text-[9px] font-black text-gold uppercase tracking-widest">Tracking Proof</span>
+                                            <span class="text-[11px] font-bold text-gray-900 mt-0.5 select-all">{{ substr($order->receipt_path, 10) }}</span>
+                                        </div>
+                                    @else
+                                        <a href="{{ Storage::url($order->receipt_path) }}" target="_blank" class="flex items-center space-x-2 text-[9px] font-black text-gold uppercase tracking-[0.15em] hover:text-black transition-colors group/link">
+                                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>
+                                            <span class="group-hover/link:underline underline-offset-4">Decrypt Receipt</span>
+                                        </a>
+                                    @endif
                                 @else
-                                <span class="text-[9px] font-bold text-gray-300 uppercase tracking-widest italic">N/A</span>
+                                    <span class="text-[9px] font-bold text-gray-300 uppercase tracking-widest italic">N/A</span>
                                 @endif
                             </td>
                             <td class="orbit-table-td">

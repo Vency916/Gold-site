@@ -88,14 +88,14 @@
 
                 <!-- Collaborative Metrics Grid -->
                 <div class="grid grid-cols-2 md:flex md:items-center gap-4 w-full md:w-auto">  
-                    <div class="luxury-card px-4 py-3 border-white/5 bg-white/5 flex flex-col justify-center">
+                    <div class="bg-[#111111] border border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl px-4 py-3 flex flex-col justify-center">
                         <span class="text-[7px] md:text-[8px] font-black text-gray-500 uppercase tracking-[0.3em] mb-1">Available Capital</span>
                         <span class="text-lg md:text-2xl font-black text-white leading-none tracking-tighter" x-text="currencySymbol + numberFormat(tradeBalance, 2)">
                             {{ \App\Services\CurrencyService::format($user->balance) }}
                         </span>
                     </div>
 
-                    <div class="luxury-card px-4 py-3 border-white/5 bg-gold/5 flex items-center justify-between md:justify-start gap-3 md:gap-4 md:rounded-full md:px-6">
+                    <div class="bg-[#111111] border border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl px-4 py-3 bg-[#D4AF37]/5 flex items-center justify-between md:justify-start gap-3 md:gap-4 md:rounded-full md:px-6">
                         <div class="text-left md:text-right">
                             <p class="text-[7px] md:text-[8px] font-black text-gray-500 md:text-gold uppercase tracking-[0.2em]">Vault Valuation</p>
                             <p class="text-lg font-black text-white leading-none tracking-tighter">{{ \App\Services\CurrencyService::format($totalValue) }}</p>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($pendingDeposits as $deposit)
-                    <div class="luxury-card p-6 flex flex-col justify-between border-gold/10 bg-gold/[0.02] group hover:border-gold/30 transition-all duration-500">
+                    <div class="bg-[#111111] border border-[#D4AF37]/10 rounded-[2rem] shadow-2xl backdrop-blur-3xl p-6 flex flex-col justify-between bg-[#D4AF37]/[0.02] group hover:border-[#D4AF37]/30 transition-all duration-500">
                         <div class="flex justify-between items-start mb-6">
                             <div class="space-y-1">
                                 <p class="text-[8px] font-black text-gray-600 uppercase tracking-widest">Injection Ref</p>
@@ -153,7 +153,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($pendingOrders as $order)
-                    <div class="luxury-card p-6 flex flex-col justify-between border-white/5 bg-white/[0.02] group hover:border-gold/30 transition-all duration-500">
+                    <div class="bg-[#111111] border border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl p-6 flex flex-col justify-between bg-white/[0.02] group hover:border-[#D4AF37]/30 transition-all duration-500">
                         <div class="flex justify-between items-start mb-6">
                             <div class="space-y-1">
                                 <p class="text-[8px] font-black text-gray-600 uppercase tracking-widest">Acquisition Ref</p>
@@ -238,7 +238,7 @@
                 </div>
 
                 <div class="grid grid-cols-2 gap-4 md:gap-6">
-                    <button @click="showTradeModal = true" class="luxury-card p-6 md:p-10 flex flex-col justify-between aspect-square group hover:bg-gold transition-all duration-500 text-left">
+                    <button @click="showTradeModal = true" class="bg-[#111111] border border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl p-6 md:p-10 flex flex-col justify-between aspect-square group hover:bg-[#D4AF37] transition-all duration-500 text-left">
                         <div class="w-8 h-8 md:w-12 md:h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-black/20 group-hover:bg-black/5">
                             <svg class="w-4 h-4 md:w-6 md:h-6 text-gold group-hover:text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg>
                         </div>
@@ -248,7 +248,7 @@
                         </div>
                     </button>
 
-                    <a href="{{ route('transactions.index') }}" class="luxury-card p-6 md:p-10 flex flex-col justify-between aspect-square group hover:bg-white/10 transition-all duration-500 text-left border-white/5 bg-[#181818]">
+                    <a href="{{ route('transactions.index') }}" class="bg-[#111111] border border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl p-6 md:p-10 flex flex-col justify-between aspect-square group hover:bg-white/10 transition-all duration-500 text-left bg-[#181818]">
                         <div class="w-8 h-8 md:w-12 md:h-12 rounded-full bg-white/5 flex items-center justify-center group-hover:bg-gold/10 group-hover:border-gold/20 transition-all">
                             <svg class="w-4 h-4 md:w-6 md:h-6 text-white group-hover:text-gold transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                         </div>
@@ -269,9 +269,9 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @forelse($holdings as $holding)
-                    <div class="holding-card group">
+                    <div class="relative overflow-hidden rounded-[2.5rem] bg-[#0A0A0A] border border-white/5 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
                         <!-- Split Tone Header: High Radius + Charcoal -->
-                        <div class="holding-card-header flex justify-between items-start">
+                        <div class="p-8 bg-[#161616] border-b border-white/5 flex justify-between items-start">
                             <div class="space-y-1">
                                 <span class="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[9px] font-bold text-gray-400 uppercase tracking-widest">
                                     LBMA Standard
@@ -288,7 +288,7 @@
                         </div>
                         
                         <!-- Main Body: Obsidian -->
-                        <div class="holding-card-body space-y-8">
+                         <div class="p-8 space-y-8">
                             <div class="flex justify-between items-end">
                                 <div>
                                     <p class="text-[10px] font-bold text-gray-600 uppercase tracking-widest mb-1">Asset Quantity</p>
@@ -312,7 +312,7 @@
                         </div>
                     </div>
                     @empty
-                    <div class="col-span-full py-24 text-center luxury-card border-dashed">
+                    <div class="col-span-full py-24 text-center bg-[#111111] border border-dashed border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl">
                         <p class="text-gray-500 italic">No assets currently held in your private vault.</p>
                     </div>
                     @endforelse
@@ -331,7 +331,7 @@
              x-transition:leave-end="opacity-0 scale-95"
              x-cloak>
             
-            <div class="luxury-card w-full max-w-lg p-6 md:p-12 relative overflow-hidden" @click.away="showTradeModal = false">
+            <div class="bg-[#111111] border border-white/5 rounded-[2rem] shadow-2xl backdrop-blur-3xl w-full max-w-lg p-6 md:p-12 relative overflow-hidden" @click.away="showTradeModal = false">
                 <!-- Modal Decor -->
                 <div class="absolute -top-24 -right-24 w-48 h-48 bg-gold/5 rounded-full blur-3xl"></div>
                 

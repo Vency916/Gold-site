@@ -11,8 +11,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>PREMIUM BULLION | Gold & Silver Marketplace</title>
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        
+        <!-- UI Lifeboat: Tailwind CSS & Alpine.js CDN Fallbacks (Ensures site styling works in production) -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        colors: {
+                            gold: { light: '#F4E0A1', DEFAULT: '#D4AF37', dark: '#996515', muted: '#8A7139' },
+                            luxury: { black: '#0A0A0A', charcoal: '#111111', cream: '#FAF9F6', bronze: '#CD7F32' }
+                        },
+                        fontFamily: {
+                            sans: ['Outfit', 'sans-serif'],
+                            serif: ['Playfair Display', 'serif']
+                        }
+                    }
+                }
+            }
+        </script>
+        <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>
-    <body class="antialiased selection:bg-gold/30">
+    <body class="antialiased bg-black text-white selection:bg-gold/30">
         <!-- Navigation -->
         @include('layouts.navigation')
 
@@ -27,7 +48,7 @@
         @endif
 
         <!-- Live Price Ticker -->
-        <div class="fixed top-20 md:top-[72px] w-full bg-black/60 backdrop-blur-2xl border-y border-white/5 py-4 z-40 overflow-hidden">
+        <div class="fixed top-[68px] md:top-[72px] w-full bg-black/80 backdrop-blur-2xl border-y border-white/5 py-2 md:py-4 z-40 overflow-hidden">
             <div class="flex items-center justify-center md:justify-start whitespace-nowrap md:animate-marquee">
                 <!-- Main Prices -->
                 <div class="flex items-center space-x-8 md:space-x-12 px-6">
@@ -71,7 +92,7 @@
                 <div class="absolute top-[40%] -left-[10%] w-[60%] h-[80%] bg-gradient-to-tr from-luxury-bronze/5 via-transparent to-transparent blur-[100px] rounded-full opacity-20"></div>
             </div>
 
-            <div class="relative pt-48 pb-24 px-6">
+            <div class="relative pt-56 md:pt-48 pb-24 px-6">
                 <div class="max-w-6xl mx-auto text-center space-y-10">
                     <div class="space-y-4">
                         <span class="text-[10px] font-bold uppercase tracking-[0.5em] text-gold/60 animate-fade-in block">ESTABLISHED MCMXXIV</span>

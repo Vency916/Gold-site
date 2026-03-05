@@ -3,18 +3,22 @@
         Options -MultiViews -Indexes
     </IfModule>
 
+    Options +FollowSymLinks
     RewriteEngine On
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 
-    # Redirect Trailing Slashes If Not A Directory...
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteCond %{REQUEST_URI} (.+)/$
-    RewriteRule ^ %1 [L,R=301]
+    # 1. Redirect /storage/ requests specifically to public/storage/
+    # This must be FIRST because the root has a 'storage' folder that would otherwise match -d
+    RewriteRule ^storage/(.*)$ public/storage/$1 [L]
 
-    # Handle Front Controller...
+    # 2. Allow access to existing root files (like storage_fix.php)
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
+
+    # 3. Handle Front Controller for everything else
     RewriteCond %{REQUEST_URI} !^public
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>

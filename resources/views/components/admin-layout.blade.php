@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-white">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-[#F8F9FC]">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,8 +14,60 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- UI Lifeboat: Tailwind CSS & Alpine.js CDN Fallbacks -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: { light: '#F4E0A1', DEFAULT: '#D4AF37', dark: '#996515', muted: '#8A7139' },
+                        luxury: { black: '#0A0A0A', charcoal: '#111111', cream: '#FAF9F6', bronze: '#CD7F32' }
+                    },
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Admin CSS Class Definitions Fallback (mirrors compiled admin.css) -->
+    <style>
+        :root {
+            --orbit-bg: #F9FAFB;
+            --orbit-card-bg: #FFFFFF;
+            --orbit-sidebar-bg: #FFFFFF;
+            --orbit-border: #F3F4F6;
+            --orbit-text-primary: #111827;
+            --orbit-text-secondary: #6B7280;
+            --orbit-accent: #000000;
+            --orbit-gold: #D4AF37;
+            --orbit-shadow: 0 1px 3px 0 rgba(0,0,0,0.05), 0 1px 2px 0 rgba(0,0,0,0.03);
+            --orbit-radius: 12px;
+        }
+        body { background-color: var(--orbit-bg) !important; color: var(--orbit-text-primary) !important; font-family: 'Inter', sans-serif !important; }
+        .orbit-card { background: var(--orbit-card-bg); border: 1px solid var(--orbit-border); border-radius: var(--orbit-radius); box-shadow: var(--orbit-shadow); }
+        .orbit-sidebar { background: var(--orbit-sidebar-bg); border-right: 1px solid var(--orbit-border); }
+        .orbit-input { background-color: #fcfcfc; border: 1px solid var(--orbit-border); border-radius: 8px; padding: 0.625rem 0.875rem; font-size: 0.875rem; transition: all 0.2s; color: var(--orbit-text-primary); width: 100%; }
+        .orbit-input:focus { border-color: var(--orbit-gold); box-shadow: 0 0 0 2px rgba(212,175,55,0.1); outline: none; }
+        .orbit-btn-primary { background-color: var(--orbit-accent); color: white; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.625rem 1.25rem; border-radius: 8px; transition: all 0.2s; display: inline-block; cursor: pointer; }
+        .orbit-btn-primary:hover { background-color: var(--orbit-gold); color: black; }
+        .orbit-table-th { background-color: var(--orbit-bg); color: var(--orbit-text-secondary); font-size: 0.625rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; padding: 1rem 1.5rem; border-bottom: 1px solid var(--orbit-border); }
+        .orbit-table-td { padding: 1rem 1.5rem; font-size: 0.75rem; border-bottom: 1px solid var(--orbit-border); color: var(--orbit-text-primary); }
+        .orbit-status-badge { padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.625rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.025em; }
+        .orbit-metric-val { font-size: 1.875rem; line-height: normal; font-weight: 800; letter-spacing: -0.025em; }
+        .orbit-sidebar-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.625rem 1rem; border-radius: 8px; font-size: 0.75rem; font-weight: 600; color: var(--orbit-text-secondary); transition: all 0.2s; text-decoration: none; }
+        .orbit-sidebar-link:hover, .orbit-sidebar-link.active { background-color: var(--orbit-bg); color: var(--orbit-text-primary); }
+        .orbit-sidebar-heading { font-size: 0.625rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.1em; color: #9CA3AF; margin: 1.5rem 0 0.75rem 0; display: block; }
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
-<body class="h-full antialiased admin-body">
+<body class="h-full antialiased bg-[#F8F9FC] text-gray-900">
     <div x-data="{ sidebarOpen: false }" class="min-h-full">
         <!-- Sidebar for mobile -->
         <div x-show="sidebarOpen" class="relative z-50 lg:hidden" role="dialog" aria-modal="true">
